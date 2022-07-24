@@ -1,5 +1,7 @@
-import React, {useState} from "react";
-import Validate from "../scripts/RegisterValidation";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import ValidateRegisterForm from "../scripts/Validations/RegisterValidation";
+import { UserAuthContext } from "../components/UserAuth";
 
 function RegisterForm(props) {
     return (
@@ -53,6 +55,8 @@ function Register(props) {
         password: "",
         confirmPassword: ""
     });
+    const {Login} = useContext(UserAuthContext);
+    const navigate = useNavigate();
 
     function handleChange(event) {
         if(event.target.name === "username") {
@@ -68,8 +72,9 @@ function Register(props) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        if(!Validate(username, password, confirmPassword, setErrors)) {
-            console.log('Submitting');
+        if(!ValidateRegisterForm(username, password, confirmPassword, setErrors)) {
+            Login();
+            navigate("/");
         }
     }
 

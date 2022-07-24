@@ -1,5 +1,5 @@
 function CheckIfPasswordsMatch(password, confirmPassword) {
-    return password === confirmPassword ? "" : "Password does not match.";
+    return password === confirmPassword ? "" : "Passwords do not match.";
 }
 
 export default CheckIfPasswordsMatch
