@@ -16,7 +16,7 @@ export function UserAuthProvider({children}) {
         axios.post("/api/accounts/register/", {username: username, password: password})
             .then((res) => {
                 localStorage.setItem("Token", res.data.token);
-                localStorage.setItem("Username", res.data.username);
+                localStorage.setItem("Username", res.data.user.username);
                 setIsAuth(true);
                 console.log("Successfully registered");
             })
@@ -30,7 +30,7 @@ export function UserAuthProvider({children}) {
             .then((res) => {
                 console.log(res.data);
                 localStorage.setItem("Token", res.data.token);
-                localStorage.setItem("Username", res.data.username);
+                localStorage.setItem("Username", res.data.user.username);
                 setIsAuth(true);
                 console.log("Successfully logged in");
             })
