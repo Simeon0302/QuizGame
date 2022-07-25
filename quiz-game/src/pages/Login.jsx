@@ -58,7 +58,7 @@ function Login(props) {
         event.preventDefault();
 
         if(!ValidateLoginForm(username, password, setErrors)) {
-            Login();
+            Login(username, password);
             navigate("/");
         }
     }

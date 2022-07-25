@@ -55,7 +55,7 @@ function Register(props) {
         password: "",
         confirmPassword: ""
     });
-    const {Login} = useContext(UserAuthContext);
+    const { Register } = useContext(UserAuthContext);
     const navigate = useNavigate();
 
     function handleChange(event) {
@@ -73,7 +73,7 @@ function Register(props) {
     function handleSubmit(event) {
         event.preventDefault();
         if(!ValidateRegisterForm(username, password, confirmPassword, setErrors)) {
-            Login();
+            Register(username, password);
             navigate("/");
         }
     }
