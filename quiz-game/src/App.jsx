@@ -18,12 +18,12 @@ function App() {
         <BrowserRouter>
             <Navbar />
             <Routes>
-                <Route path="/" element={<Home />} />
                 <Route element={<ProtectedRouteForNotLoggedUsers />} >
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                 </Route>
                 <Route element={<ProtectedRouteForLoggedUsers />} >
+                    <Route path="/" element={<Home />} />
                     <Route path="/logout" element={<Logout />} />
                 </Route>
                 <Route path="*" element={<PageNotFound />} />
