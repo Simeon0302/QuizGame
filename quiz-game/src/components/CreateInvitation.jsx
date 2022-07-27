@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import CheckInputField from "../scripts/Validations/InputFieldValidate";
 import axios from "../scripts/axios";
 import { UserAuthContext } from "../components/UserAuth";
@@ -27,6 +28,7 @@ function CreateInvitations() {
     const [username, setUsername] = useState("");
     const [errors, setErrors] = useState({ username: "" });
     const {token} = useContext(UserAuthContext);
+    const navigate = useNavigate();
 
     function handleChange(event) {
         setUsername(event.target.value);
@@ -43,15 +45,11 @@ function CreateInvitations() {
                 username: username
             })
             .then((res) => {
-                console.log(res.data.channel);
+                navigate(`/game/${res.data.channel}`);
             })
             .catch((e) => {
                 console.log(e);
             })
-            console.log("Sending invitation");
-            setUsername("");
-            setErrors({username: ""});
-            event.target.reset();
         }
     }
 

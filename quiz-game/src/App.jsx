@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Logout from './pages/Logout';
 import Navbar from './components/Navbar';
 import PageNotFound from './pages/PageNotFound';
+import Game from './pages/Game';
 import ProtectedRouteForLoggedUsers from './components/ProtectedRouteForLoggedUsers';
 import ProtectedRouteForNotLoggedUsers from './components/ProtectedRouteForNotLoggedUsers';
 
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                 </Route>
                 <Route element={<ProtectedRouteForLoggedUsers />} >
+                    <Route path="/game/:id" element={<Game />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/logout" element={<Logout />} />
                 </Route>

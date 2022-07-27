@@ -18,8 +18,8 @@ function InvitationModal({isOpen, onAccept, onCancel, invitedBy}) {
                 </div>
 
                 <div id="modal-footer">
-                    <button onClick={onAccept}>Accept</button>
-                    <button onClick={onCancel}>Decline</button>
+                    <button onClick={onAccept} id="accept-button">Accept</button>
+                    <button onClick={onCancel} id="cancel-button">Decline</button>
                 </div>
             </div>
         </div>,

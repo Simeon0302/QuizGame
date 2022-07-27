@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
-import { UserAuthContext } from "../components/UserAuth";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import InvitationModal from "../components/Modal/InvitationModal";
 
-function InvitationReceiver() {
-    const { token, username } = useContext(UserAuthContext);
-    const socketURL = `ws://192.168.182.94:8001/ws/invitations/${token}/`;
-    const ws = new WebSocket(socketURL);
+function InvitationReceiver({ws, username}) {
     const [isOpen, setIsOpen] = useState(false);
     const [invitedBy, setInvitedBy] = useState("");
+    const [gameId, setGameId] = useState(null);
+    const navigate = useNavigate();
 
     function handleAccept() {
-        console.log("Invitation accepted");
+        navigate(`/game/${gameId}`);
         setIsOpen(false);
     }
 
@@ -20,15 +19,16 @@ function InvitationReceiver() {
     }
 
     ws.onopen = () => {
-        console.log("Connected");
+        console.log("Listening for invites...");
     }
 
     ws.onmessage = resJSON => {
-        const res = JSON.parse(resJSON.data);
-        if (res.type === "game_invitation" && res.data.invited === username) {
-            console.log("Invited by " + res.data.invited);
+        const {type, data} = JSON.parse(resJSON.data);
+
+        if (type === "game_invitation" && data.invited === username) {
+            setGameId(data.channel);
             setIsOpen(true);
-            setInvitedBy(res.data.invited);
+            setInvitedBy(data.invited);
         }
     }
 
@@ -36,7 +36,7 @@ function InvitationReceiver() {
         console.error(e);
     }
 
-    ws.onclose = res => {
+    ws.onclose = (res) => {
         console.log("Connection closed");
     }
 
