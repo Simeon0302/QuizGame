@@ -45,7 +45,7 @@ function CreateInvitations() {
                 username: username
             })
             .then((res) => {
-                navigate(`/game/${res.data.channel}`);
+                navigate(`/game/${res.data.channel}/${res.data.id}`);
             })
             .catch((e) => {
                 console.log(e);

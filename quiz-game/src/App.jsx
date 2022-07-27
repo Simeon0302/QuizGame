@@ -24,7 +24,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                 </Route>
                 <Route element={<ProtectedRouteForLoggedUsers />} >
-                    <Route path="/game/:id" element={<Game />} />
+                    <Route path="/game/:channel/:gameId" element={<Game />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/logout" element={<Logout />} />
                 </Route>

@@ -6,10 +6,11 @@ function InvitationReceiver({ws, username}) {
     const [isOpen, setIsOpen] = useState(false);
     const [invitedBy, setInvitedBy] = useState("");
     const [gameId, setGameId] = useState(null);
+    const [gameChannel, setGameChannel] = useState(null);
     const navigate = useNavigate();
 
     function handleAccept() {
-        navigate(`/game/${gameId}`);
+        navigate(`/game/${gameChannel}/${gameId}`);
         setIsOpen(false);
     }
 
@@ -26,7 +27,8 @@ function InvitationReceiver({ws, username}) {
         const {type, data} = JSON.parse(resJSON.data);
 
         if (type === "game_invitation" && data.invited === username) {
-            setGameId(data.channel);
+            setGameChannel(data.channel);
+            setGameId(data.game_id);
             setIsOpen(true);
             setInvitedBy(data.invited);
         }
