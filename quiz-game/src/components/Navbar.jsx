@@ -9,7 +9,7 @@ function Navbar() {
         <div id="navbar">
             {!isAuth ? <Link className="navbar-link" to="/login">Login</Link> : null}
             {!isAuth ? <Link className="navbar-link" to="/register">Register</Link> : null}
-            <Link className="navbar-link" to="/">Home</Link>
+            {isAuth ? <Link className="navbar-link" to="/">Home</Link> : null}
             {isAuth ? <Link className="navbar-link" to="/logout">Logout</Link> : null}
         </div>
     )

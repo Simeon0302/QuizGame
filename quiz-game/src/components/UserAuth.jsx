@@ -55,6 +55,7 @@ export function UserAuthProvider({children}) {
 
     const data = {
         username: localStorage.getItem("Username"),
+        token: localStorage.getItem("Token"),
         isAuth,
         setIsAuth,
         Register,
