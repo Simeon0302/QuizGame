@@ -7,28 +7,29 @@ function QuestionController({handleTimeout, handleAnswer, questionObj, maxTime})
         return (<button key={id} answer-id={id} onClick={onAnswer}>{content}</button>);
     })
     const timerId = useRef(null);
-    const time = useRef(0);
+    const remainingTime = useRef(maxTime);
 
     function onAnswer(event) {
         clearTimeout(timerId.current);
-        handleAnswer(event, time.current);
+        handleAnswer(event, remainingTime.current);
     }
 
     useEffect(() => {
         timerId.current = setInterval(() => {
-            time.current++;
-            console.log(time.current);
+            remainingTime.current--;
+            console.log(remainingTime.current);
             
-            if(time.current === maxTime) {
+            if(remainingTime.current <= 0) {
                 handleTimeout();
                 clearInterval(timerId.current);
             }
         }, 1000)
 
         return () => {
+            remainingTime.current = maxTime;
             clearInterval(timerId.current);
         }
-    }, []);
+    }, [questionObj]);
     
 
     return (

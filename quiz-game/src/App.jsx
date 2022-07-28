@@ -11,6 +11,7 @@ import Logout from './pages/Logout';
 import Navbar from './components/Navbar';
 import PageNotFound from './pages/PageNotFound';
 import Game from './pages/Game';
+import GameResults from './pages/GameResults';
 import ProtectedRouteForLoggedUsers from './components/ProtectedRouteForLoggedUsers';
 import ProtectedRouteForNotLoggedUsers from './components/ProtectedRouteForNotLoggedUsers';
 
@@ -25,6 +26,7 @@ function App() {
                 </Route>
                 <Route element={<ProtectedRouteForLoggedUsers />} >
                     <Route path="/game/:channel/:gameId" element={<Game />} />
+                    <Route path="/game/results/:gameId" element={<GameResults />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/logout" element={<Logout />} />
                 </Route>
