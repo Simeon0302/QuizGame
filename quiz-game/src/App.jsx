@@ -3,12 +3,11 @@ import {
     Routes,
     Route
 } from 'react-router-dom';
-import './index.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Logout from './pages/Logout';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import PageNotFound from './pages/PageNotFound';
 import Game from './pages/Game';
 import ProtectedRouteForLoggedUsers from './components/ProtectedRouteForLoggedUsers';
