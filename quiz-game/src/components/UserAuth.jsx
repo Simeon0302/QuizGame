@@ -4,11 +4,14 @@ import axios from "../scripts/axios";
 export const UserAuthContext = createContext(null);
 
 export function UserAuthProvider({children}) {
-    const [isAuth, setIsAuth] = useState(false);
+    const [isAuth, setIsAuth] = useState(null);
 
     useEffect(() => {
         if(localStorage.getItem("Token") !== null) {
             setIsAuth(true);
+        }
+        else {
+            setIsAuth(false);
         }
     }, [])
 
