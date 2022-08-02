@@ -3,13 +3,12 @@ import QuestionController from "./QuestionController";
 import GameScore from "./GameScore";
 import Loading from "./LoadingSpinner/Loading";
 
-const maxTime = 50;
+const maxTimeForAnswering = 30;
 
-function GameController({ws, gameData}) {
+function GameController({ws, gameData, setIsGameDataLoaded}) {
     const {score, questionObj} = gameData;
 
-    function handleAnswer(event, time) {
-        const answerId = Number(event.target.getAttribute("answer-id"));
+    function handleAnswer(answerId, time) {
         console.log("Answer id " + answerId);
         console.log("Time for making answer: " + time);
 
@@ -22,6 +21,7 @@ function GameController({ws, gameData}) {
         }));
 
         gameData.Reset();
+        setIsGameDataLoaded(false);
     }
 
     function handleTimeout() {
@@ -30,27 +30,28 @@ function GameController({ws, gameData}) {
         ws.send(JSON.stringify({
             type: "question_answer",
             data: {
-                answer: 1,
-                time: 0
+                answer: null,
+                time: -1
             }
         }))
 
         gameData.Reset();
+        setIsGameDataLoaded(false);
     }
 
     return (
         <div id="GameController">
-            {gameData.isReady ? 
+            {gameData.isReady ?
                 <div>
                     <GameScore score={score}/>
                     <QuestionController
                         handleAnswer={handleAnswer}
                         handleTimeout={handleTimeout}
                         questionObj={questionObj}
-                        maxTime={maxTime}
+                        maxTime={maxTimeForAnswering}
                     />
                 </div> :
-                <Loading message="Loading" />
+                <Loading message="Waiting for the other player..." />
             }
         </div>
     )

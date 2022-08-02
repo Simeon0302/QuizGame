@@ -66,7 +66,7 @@ function Game() {
 
     return (
         <div>
-            {isGameStarted ? <GameController ws={ws.current} gameData={gameData.current} /> : <Loading message="Waiting for the game to start..." />}
+            {isGameStarted ? <GameController ws={ws.current} gameData={gameData.current} setIsGameDataLoaded={setIsGameDataLoaded} /> : <Loading message="Waiting for the game to start..." />}
         </div>
     )
 }
