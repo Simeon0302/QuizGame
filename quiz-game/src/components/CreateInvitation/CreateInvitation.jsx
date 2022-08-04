@@ -1,24 +1,30 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import CheckInputField from "../scripts/Validations/InputFieldValidate";
-import axios from "../scripts/axios";
-import { UserAuthContext } from "../components/UserAuth";
+import CheckInputField from "../../scripts/Validations/InputFieldValidate";
+import axios from "../../scripts/axios";
+import { UserAuthContext } from "../UserAuth";
+import formStyles from "../../styles/form.module.css";
 
 function CreateInvitationForm(props) {
     return (
-        <div id="createInvitationForm">
+        <div id={formStyles.container}>
             <form onSubmit={props.onSubmit}>
-                <label>
-                    Username:
-                    <input
-                        type="text"
-                        className="inputField"
-                        placeholder="Username"
-                        onChange={props.onChange}
-                    />
-                    {props.errors.username}
-                </label>
-                <button type="submit" className="submitButton">Send Invitation</button>
+                <h2 id={formStyles.headerTittle}>Send invite to other players</h2>
+                <div id={formStyles.rowContainer}>
+                    <div className={formStyles.row}>
+                        <label>Username:</label>
+                        <input
+                            type="text"
+                            className={formStyles.inputField}
+                            placeholder="Username"
+                            onChange={props.onChange}
+                        />
+                        <div className={formStyles.errors}>
+                            {props.errors.username}
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" id={formStyles.submitButton}>Send Invitation</button>
             </form>
         </div>
     )
@@ -54,13 +60,11 @@ function CreateInvitations() {
     }
 
     return (
-        <div id="createInvitation">
-            <CreateInvitationForm
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-                errors={errors}
-            />
-        </div>
+        <CreateInvitationForm
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            errors={errors}
+        />
     )
 
 }

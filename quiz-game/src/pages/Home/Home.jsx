@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import InvitationReceiver from "../components/InvitationReceiver";
-import CreateInvitation from "../components/CreateInvitation";
-import { UserAuthContext } from "../components/UserAuth";
+import InvitationReceiver from "../../components/InvitationReceiver";
+import CreateInvitation from "../../components/CreateInvitation/CreateInvitation";
+import { UserAuthContext } from "../../components/UserAuth";
+import homeStyles from "./home.module.css";
 
 function Home() {
     const { token, username } = useContext(UserAuthContext);
@@ -9,8 +10,7 @@ function Home() {
     const ws = new WebSocket(socketURL);
 
     return (
-        <div id="home">
-            <h1>Home</h1>
+        <div id={homeStyles.home}>
             <InvitationReceiver ws={ws} username={username}/>
             <CreateInvitation />
         </div>
