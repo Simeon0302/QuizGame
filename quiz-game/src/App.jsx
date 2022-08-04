@@ -4,7 +4,7 @@ import {
     Route
 } from 'react-router-dom';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Register from './pages/Register';
 import Logout from './pages/Logout';
 import Navbar from './components/Navbar/Navbar';
