@@ -5,13 +5,13 @@
 }
 
 #loggedUserIcon {
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: auto;
     border-radius: 20px;
     margin: 0px 10px;
 }
 
 #username {
-    font-size: 25px;
+    font-size: 23px;
     margin: 0px 10px;
 }
