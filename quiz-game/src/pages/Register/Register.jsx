@@ -2,56 +2,57 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import ValidateRegisterForm from "../../scripts/Validations/RegisterValidation";
 import { UserAuthContext } from "../../components/UserAuth";
-import styles from "./register.module.css";
+import formStyles from "../../styles/form.module.css";
+import registerStyles from "./register.module.css";
 
 function RegisterForm(props) {
     return (
-        <div id={styles.registerContainer}>
-            <div id={styles.register}>
+        <div id={registerStyles.register}>
+            <div id={formStyles.container}>
                 <form onSubmit={props.onSubmit}>
-                    <h2 id={styles.headerTittle}>Register</h2>
-                    <div id={styles.rowContainer}>
-                        <div className={styles.row}>
+                    <h2 id={formStyles.headerTittle}>Register</h2>
+                    <div id={formStyles.rowContainer}>
+                        <div className={formStyles.row}>
                             <label>Username:</label>
                             <input
                                 type="text"
                                 name="username"
-                                className={styles.inputField}
+                                className={formStyles.inputField}
                                 placeholder="Username"
                                 onChange={props.onChange}
                             />
-                            <div className={styles.errors}>
+                            <div className={formStyles.errors}>
                                 {props.errors.username}
                             </div>
                         </div>
-                        <div className={styles.row}>
+                        <div className={formStyles.row}>
                             <label>Password:</label>
                             <input
                                 type="password"
                                 name="password"
-                                className={styles.inputField}
+                                className={formStyles.inputField}
                                 placeholder="********"
                                 onChange={props.onChange}
                             />
-                            <div className={styles.errors}>
+                            <div className={formStyles.errors}>
                                 {props.errors.password}
                             </div>
                         </div>
-                        <div className={styles.row}>
+                        <div className={formStyles.row}>
                             <label>Re-enter password:</label>
                             <input 
                                 type="password"
                                 name="confirmPassword"
-                                className={styles.inputField}
+                                className={formStyles.inputField}
                                 placeholder="********"
                                 onChange={props.onChange}
                             />
-                            <div className={styles.errors}>
+                            <div className={formStyles.errors}>
                                 {props.errors.confirmPassword}
                             </div>
                         </div>
                     </div>
-                    <button type="submit" id={styles.submitButton}>Register</button>
+                    <button type="submit" id={formStyles.submitButton}>Register</button>
                 </form>
             </div>
         </div>
