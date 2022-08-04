@@ -2,43 +2,43 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import ValidateLoginForm from "../../scripts/Validations/LoginValidation";
 import { UserAuthContext } from "../../components/UserAuth";
-import css from "./login.css";
+import styles from "./login.module.css";
 
 function LoginForm(props) {
     return (
-        <div id="loginContainer">
-            <div id="login">
+        <div id={styles.loginContainer}>
+            <div id={styles.login}>
                 <form onSubmit={props.onSubmit}>
-                    <h2 id="headerTittle">Login</h2>
-                    <div id="rowContainer">
-                        <div className="row">
+                    <h2 id={styles.headerTittle}>Login</h2>
+                    <div id={styles.rowContainer}>
+                        <div className={styles.row}>
                             <label>Username</label>
                             <input
                                 type="text"
                                 name="username"
-                                className="inputField"
+                                className={styles.inputField}
                                 placeholder="username"
                                 onChange={props.onChange}
                             />
-                            <div className="errors">
+                            <div className={styles.errors}>
                                 {props.errors.username}
                             </div>
                         </div>
-                        <div className="row">
+                        <div className={styles.row}>
                             <label>Password</label>
                             <input
                                 type="password"
                                 name="password"
-                                className="inputField"
+                                className={styles.inputField}
                                 placeholder="********"
                                 onChange={props.onChange}
                             />
-                            <div className="errors">
+                            <div className={styles.errors}>
                                 {props.errors.password}
                             </div>
                         </div>
                     </div>
-                    <button type="submit" id="submitButton">Login</button>
+                    <button type="submit" id={styles.submitButton}>Login</button>
                 </form>
             </div>
         </div>
@@ -73,7 +73,6 @@ function Login(props) {
     }
     return (
         <LoginForm
-            style={css}
             onChange={handleChange}
             onSubmit={handleSubmit}
             errors={errors}
