@@ -1,3 +1,10 @@
+.loadingMessage {
+    font-weight: bold;
+    font-size: 2.5em;
+    margin: 50px;
+    color: #222222;
+}
+
 @keyframes spinner {
     0% {
         transform: rotate(0deg);
@@ -12,7 +19,7 @@
     width: 50px;
     height: 50px;
     border: 10px solid #f3f3f3;
-    border-top: 10px solid #383636;
+    border-top: 10px solid #222222;
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
 }
@@ -22,5 +29,5 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 350px;
+    margin: 80px 20px 60px;
 }
